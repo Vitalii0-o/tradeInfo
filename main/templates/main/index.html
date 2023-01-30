@@ -1,0 +1,262 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+   <!--- basic page needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>TradeInfo</title>
+	<meta name="description" content="">  
+	<meta name="author" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ 	<!-- CSS
+   ================================================== -->
+   <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
+   <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+   <link rel="stylesheet" href="{% static 'main/css/vendor.css' %}">
+   <!-- script
+   ================================================== -->   
+	<script src="{% static 'main/css/vendor.css' %}"></script>
+	<script src="{% static 'main/js/pace.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'main/js/stock.js' %}"></script>
+
+
+
+</head>
+
+<body id="top">
+
+	<!-- header 
+   ================================================== -->
+   <header>   	
+   	<div class="row">
+
+   		<div class="top-bar">
+   			<a class="menu-toggle" href="#"><span>Menu</span></a>
+
+	   		<div class="logo">
+		         <a href="#"><h5 style="color: whitesmoke; font-size: 13px;">TradeInfo</h5></a>
+		      </div>		      
+
+		   	<nav id="main-nav-wrap">
+					<ul class="main-navigation">
+						<li class="current"><a class="smoothscroll"  href="#intro" title="">Home</a></li>
+						<li><a class="smoothscroll"  href="#about" title="">About</a></li>
+						<li><a class="smoothscroll"  href="#resume" title="">Stocks</a></li>
+					</ul>
+				</nav>    		
+   		</div> <!-- /top-bar --> 
+   		
+   	</div> <!-- /row --> 		
+   </header> <!-- /header -->
+
+	<!-- intro section
+   ================================================== -->
+   <section id="intro">   
+
+   	<div class="intro-overlay"></div>	
+
+   	<div class="intro-content">
+   		<div class="row">
+
+   			<div class="col-twelve">
+
+	   			<h5>Trade Info</h5>
+
+	   			<h1>Financial help</h1>
+
+	   			<p class="intro-position">
+	   				<span>Market monitoring</span>
+	   				<span>Price prediction</span>
+	   			</p>
+
+	   			<a class="button stroke smoothscroll" href="#about" title="">More About Us</a>
+
+	   		</div>  
+   			
+   		</div>   		 		
+   	</div> <!-- /intro-content --> 
+
+   	<ul class="intro-social">        
+         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+         <li><a href="#"><i class="fa fa-behance"></i></a></li>
+         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+         <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+      </ul> <!-- /intro-social -->      	
+
+   </section> <!-- /intro -->
+
+
+   <!-- about section
+   ================================================== -->
+   <section id="about">  
+
+   	<div class="row section-intro">
+   		<div class="col-twelve">
+
+   			<h1>Трішки про нас</h1>
+
+   			<div class="intro-info">
+
+   				<img src="{% static 'main/images/logo.png' %}" alt="Logo">
+
+   				<p class="lead">TradeInfo програмне забезпечення, що дозволяє отримувати інформацію про перебіг торгів на біржовому валютному та фондовому ринку в режимі реального часу.</p>
+   			</div>   			
+
+   		</div>   		
+   	</div> <!-- /section-intro -->
+
+   	<div class="row about-content" style="">
+
+
+   		<div class="col-six tab-full">
+
+   			<h3>Top stocks</h3>
+   			<p>Топ лідерів росту акцій на Українському ринку</p>
+
+				<ul class="skill-bars">
+				   <li>
+				   	<div class="progress percent22" style="width: 22.5%"><span>+22.50%</span></div>
+				   	<strong style="margin-left: 300px; margin-right: 10px">KVBZ</strong>
+				   </li>
+				   <li>
+				   	<div class="progress percent15" style="width: 15.38%"><span>+15.38%</span></div>
+				   	<strong style="margin-left: 300px; margin-right: 10px">TATM</strong>
+				   </li>
+				   <li>
+				   	<div class="progress percent3" style="width: 3%"><span>+3,67%</span></div>
+				   	<strong style="margin-left: 300px; margin-right: 10px">MOEN</strong>
+				   </li>
+				   <li>
+				   	<div class="progress percent2" style="width: 2%"><span>+2,18%</span></div>
+				   	<strong style="margin-left: 300px; margin-right: 10px">AMD</strong>
+				   </li>
+      
+				</ul>
+
+   		</div>
+
+   	</div>
+
+   	<div class="row button-section">
+   		<div class="col-twelve">
+   			<a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Us</a>
+   		</div>   		
+   	</div>
+
+   </section> <!-- /process-->    
+
+
+   <!-- resume Section
+   ================================================== -->
+	<section id="resume" class="grey-section">
+        <div class="row section-intro">
+   			<h1>Статистика</h1>
+            {% csrf_token %}
+            <script>
+                $(document).ready(function () {
+
+                $("#stock-form").submit(function (e) {
+                    // preventing from page reload and default actions
+                    e.preventDefault();
+                    var stock_name = document.getElementById('stockName').value;
+                    // make POST ajax call
+                    $.ajax({
+                        type: 'GET',
+                        url: "{% url 'process_data' %}",
+                        data: {"name": stock_name},
+                        success: function (response) {
+
+                            document.location.reload();
+                        },
+                        error: function (response) {
+                            alert("Не правильна назва");
+                        }
+                    })
+
+                })
+            })
+            </script>
+            <form id="stock-form">
+                <div class="row">
+
+                    <div style="margin-left: auto; margin-right: auto;">
+                    <input  style="margin-left: auto; margin-right: auto;" name="name" type="text" id="stockName" placeholder="Name" value="" minlength="2" required="">
+                    </div>
+
+                    <div class = "Show-stocks">
+                        <input type="submit"  value="Show stocks" />
+                    </div>
+
+                </div>
+            </form>
+            <img id="stocksma1" src={% static 'main/py/my_chart.png' %}>
+            <img id="stocksma2" src={% static 'main/py/my_chart1.png' %}>
+            <img id="stocksma3" src={% static 'main/py/my_chart2.png' %}>
+            <img id="stocksma4" src={% static 'main/py/my_chart3.png' %}>
+            <img id="stocksma5" src={% static 'main/py/my_chart4.png' %}>
+
+   	    </div>
+
+
+   	</div> <!-- /section-intro-->
+
+		
+	</section> <!-- /features -->
+
+
+
+
+
+   <!-- footer
+   ================================================== -->
+
+   <footer>
+     	<div class="row">
+
+     		<div class="col-six tab-full pull-right social">
+
+     			<ul class="footer-social">        
+			      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+			      <li><a href="#"><i class="fa fa-behance"></i></a></li>
+			      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+			      <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+			      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+			   </ul> 
+	      		
+	      </div>
+
+      	<div class="col-six tab-full">
+	      	<div class="copyright">
+
+		        	<span>Design by <a href="">Vitalii</a></span>
+		         </div>		                  
+	      	</div>
+
+	      	<div id="go-top">
+		         <a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+		      </div>
+
+      	</div> <!-- /row -->     	
+   </footer>  
+
+   <div id="preloader"> 
+    	<div id="loader"></div>
+   </div> 
+
+   <!-- Java Script
+   ================================================== --> 
+   <script src="{% static 'main/js/jquery-2.1.3.min.js' %}"></script>
+   <script src="{% static 'main/js/plugins.js' %}"></script>
+   <script src="{% static 'main/js/main.js' %}"></script>
+
+</body>
+
+</html>
